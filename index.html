@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoloCodes - The Ultimate Live Code Editor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Dosis&family=Josefin+Sans:wght@400;500&family=Jost&family=Montserrat:wght@300&family=Mulish:wght@500&family=Open+Sans:wght@300;700&family=Pacifico&family=Poppins:ital,wght@0,300;0,600;1,700&family=Raleway:wght@500;600&display=swap');
+
+        body {
+            background-color: rgb(11, 11, 35);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        * {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .navbar {
+            z-index: 9999;
+            position: sticky;
+            top: 0;
+            background-color: rgb(24, 40, 97);
+            padding: 15px;
+        }
+
+        .navbar li {
+            margin-left: 5vmin;
+            margin-right: 5vmin;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            list-style: none;
+        }
+
+        .navbar li#logo {
+            font-weight: 900;
+            color: rgb(74, 181, 234);
+        }
+
+        .navbar a:hover {
+            border-bottom: 3px solid rgb(255, 255, 255);
+        }
+
+        .navbar a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        section#secOne {
+            margin-top: 20px;
+            margin-bottom: 150px;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .container .left-content {
+            padding: 15px;
+            width: 90vmin;
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            justify-content: center;
+            font-size: 8vmin;
+            margin-top: 10%;
+        }
+
+        .container .right-content img {
+            width: 30vmin;
+            animation: ease-in-out cssUpDown 2s infinite;
+        }
+
+        .container .right-content {
+            padding: 15px;
+            width: 55vmin;
+            display: flex;
+            transition: 0.4s;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            justify-content: center;
+            font-size: 4vmin;
+            margin-top: 10%;
+        }
+
+        .container .left-content h1 span {
+            color: rgb(78, 238, 139);
+            text-shadow: 4px 5px 0px rgb(6, 63, 40);
+        }
+
+        @media only screen and (max-width:550px) {
+            .navbar li#logo {
+                display: none;
+            }
+        }
+
+        .container div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        @keyframes cssUpDown {
+            0% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                filter: opacity(0.5);
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        hr {
+            border: 0;
+            border-radius: 13px;
+            background-color: rgb(75, 72, 236);
+            height: 3px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        #secTwo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            color: white;
+        }
+
+        #secTwo {
+            font-size: 2.8vmin;
+            text-align: center;
+        }
+
+        #secOne .left-content span#hideShowSpan {
+            animation: ease-in hideShow 1s infinite;
+            font-weight: lighter;
+            text-shadow: none;
+        }
+
+        #secTwo .bottom-content {
+            display: flex;
+            margin: 50px 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bottom-content .box {
+            width: 20vmin;
+            height: 20vmin;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(17, 17, 52);
+            border-radius: 13px;
+            margin: 20px;
+            transition: 0.3s;
+            flex-direction: column;
+            box-shadow: 3px 4px 0px transparent;
+        }
+
+        .bottom-content .box:hover {
+            cursor: pointer;
+            transform: translateY(-5px);
+            box-shadow: 3px 4px 0px rgb(9, 6, 36);
+            background-color: rgb(17, 20, 54);
+        }
+
+        .bottom-content .box h2 {
+            font-weight: lighter;
+            font-size: 2vmin;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .bottom-content .box h1 {
+            font-size: 3vmin;
+        }
+
+        .bottom-content .box h3 {
+            font-weight: normal;
+            font-size: 2.5vmin;
+        }
+
+        .left-content button {
+            padding: 15px;
+            font-size: 2.5vmin;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.2s ease-in-out;
+            font-weight: 550;
+            border: 3px solid white;
+            outline: none;
+            border-radius: 5px;
+            background-color: rgb(23, 31, 92);
+        }
+
+        .left-content button:hover {
+            cursor: pointer;
+        }
+
+        .btns {
+            display: flex;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background-color: rgb(21, 27, 75);
+            font-family: 'Poppins', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            display: flex;
+            text-align: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.5vmin;
+            justify-content: center;
+            padding: 15px;
+            color: white;
+        }
+
+        h1#footer-logo {
+            color: rgb(188, 228, 255);
+        }
+
+        footer a {
+            /* font-weight: lighter; */
+            color: white;
+        }
+
+        footer h2 {
+            font-weight: lighter;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .box h3.popularity {
+            color: rgb(23, 237, 105);
+        }
+
+        .box h3.trending {
+            color: rgb(255, 174, 0);
+        }
+
+        .box h3.time {
+            color: rgb(42, 174, 250);
+        }
+        button#startCodeBtn{
+            padding: 15px;
+            border: 3px solid white;
+            border-radius: 5px;
+            color: white;
+            font-size: 2.5vmin;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bolder;
+            outline: none;
+            background-color: rgb(23, 23, 93);
+        }
+        button#startCodeBtn a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li id="logo">SoloCodes</li>
+            <li><a href="#secOne">Home</a></li>
+            <li><a href="#secTwo">Start Coding</a></li>
+            <li><a href="https://github.com/SoloCodes/SoloCodes" target="_blank">GitHub</a></li>
+        </ul>
+    </div>
+    <section id="secOne">
+        <div class="container">
+            <div class="left-content">
+                <h1 id="left-head">Start<span> Coding</span></h1>
+                <h1 id="left-head">On Browser<span id="hideShowSpan">.</span></h1>
+                <div class="btns">
+                    <button id="download"><a href="#secTwo">Start Coding</a></button>
+                </div>
+            </div>
+            <div class="right-content">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/800px-CSS3_logo.svg.png"
+                    alt="">
+            </div>
+        </div>
+    </section>
+    <section id="secTwo">
+        <hr>
+        <h1 id="workExp">Your project is the best. Cosider using a PC.</h1>
+        <div class="bottom-content">
+
+            <div class="box">
+
+                <h1><i class="fab fab fa-html5"></i> HTML</h1>
+                <h3>Available</h3>
+                <br>
+                <h3 class="trending">Trending <i class="fas fa-fire-alt"></i></h3>
+
+            </div>
+
+            <div class="box">
+
+                <h1> <i class="fab fab fab fa-js-square"></i> Javascript</h1>
+                <h3>Available</h3>
+                <br>
+                <h3 class="popularity">New <i class="fas fa-tag"></i></h3>
+
+            </div>
+
+            <div class="box">
+
+                <h1> <i class="fab fa-css3-alt"></i> CSS</h1>
+                <h3>Available</h3>
+                <br>
+                <h3 class="time">Early <i class="fas fa-clock"></i></h3>
+
+            </div>
+
+            <div class="startbtn">
+            </div>
+    
+        </div>
+
+        <a href="blankProject.html"><button id="startCodeBtn">New Project</button></a>
+
+    </section>
+    <footer>
+        <h1 id="footer-logo">SoloCodes - Live Code Editor</h1>
+        <h2>Visit <a href="#secOne">Home</a></h2>
+        <h2>Visit <a href="https://github.com/SoloCodes/SoloCodes" target="_blank">GitHub</a></h2>
+        <h2>Any <a
+                href="https://www.google.com/search?q=having+queries&rlz=1C1GCEA_enIN1051IN1051&sxsrf=APwXEdfTDsyf0FvdNzFHsRbuqIe0AbBK5g%3A1688022721959&ei=wS6dZJ-JOtCE-Aawq7GIDA&ved=0ahUKEwjf7dvV9uf_AhVQAt4KHbBVDMEQ4dUDCA8&uact=5&oq=having+queries&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwAzIKCAAQRxDWBBCwA0oECEEYAFCvAlivAmCrA2gBcAF4AIABAIgBAJIBAJgBAKABAcABAcgBCA&sclient=gws-wiz-serp"
+                target="_blank">Queries</a></h2>&nbsp;&nbsp;
+        <h2>Copyright &#169; solocodes.github.io/SoloCodes | All Rights Reserved.</h2>
+    </footer>
+</body>
+
+</html>

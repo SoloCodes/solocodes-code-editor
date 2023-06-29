@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Project - SoloCodes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Dosis&family=Josefin+Sans:wght@400;500&family=Jost&family=Montserrat:wght@300&family=Mulish:wght@500&family=Open+Sans:wght@300;700&family=Pacifico&family=Poppins:ital,wght@0,300;0,600;1,700&family=Raleway:wght@500;600&display=swap');
+
+        body{
+            display: flex;
+            padding: 15px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(5, 5, 19);
+        }
+        .container{
+            display: inline-flex;
+            text-align: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .container iframe{
+            padding: 15px;
+            height: 90vh;
+            display: flex;
+            background-color: white;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        .container textarea{
+            font-size: 18px;
+            background-color: rgb(17, 10, 42);
+            border-top-left-radius: 13px;
+            border-top-right-radius: 13px;
+            border: none;
+            outline: none;
+            color: white;
+            resize: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: lighter;
+            padding: 15px;
+            height: 90vh;
+        }
+        .aa2{
+            width: 50%;
+            /* height: 20vh; */
+            display: flex;
+            flex-direction: column;
+        }
+        .aa{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+        label{
+            margin: 10px;
+            color: white;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="aa">
+        <label>HTML <i class="fa-solid fab fa-html5"></i> and CSS <i class="fa-solid fab fab fa-css3-alt"></i> and JS <i class="fa-solid fab fab fa-js-square"></i></label>
+        <textarea id="codeInput" placeholder="Start writing your code..."  onkeyup="run()"></textarea>
+    </div>
+    <div class="aa2">
+        <label>OUTPUT <i class="fa-solid fab fas fa-arrow-circle-down"></i></label>
+        <iframe src=""></iframe>
+    </div>
+    </div>
+    <script>
+        function run(){
+            document.querySelectorAll('iframe')[0].contentDocument.body.innerHTML = document.querySelector('textarea').value;
+            localStorage.setItem('code', document.querySelector('textarea').value);
+        }
+        window.onload = function refresh(){
+            document.querySelector('textarea').value = localStorage.getItem('code');
+            run();
+        }
+    </script>
+</body>
+</html>
